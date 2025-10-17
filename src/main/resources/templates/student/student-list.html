@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of students</title>
+</head>
+<body>
+    <p>List of Students</p>
+    <div th:each="student : ${students}">
+        <div>
+            <span th:text="${student.name}"></span>
+            <span th:text="${student.email}"></span>
+            <span th:text="${student.id}"></span>
+            <a class="btn btn-info" th:href="@{/students/update/{ID}(ID = ${student.id})}">Bearbeiten</a>
+        </div>
+    </div>
+</body>
+</html>
