@@ -1,13 +1,13 @@
-package de.othr.templateproject;
+package de.othr.modelandparameters;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TemplateProjectApplication {
+public class ModelAndParametersApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TemplateProjectApplication.class, args);
+        SpringApplication.run(ModelAndParametersApplication.class, args);
     }
 
 }
