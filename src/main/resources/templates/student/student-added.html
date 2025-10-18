@@ -8,6 +8,11 @@
     Student added! <br>
     Name: <span th:text="${student.name}"></span><br>
     Email: <span th:text="${student.email}"></span><br>
-    Age: <span th:text="${student.age}"></span>
+    Age: <span th:text="${student.age}"></span><br>
+    <br>
+    Address<br>
+    Street: <span th:text="${student.address.street}"></span><br>
+    City: <span th:text="${student.address.city}"></span><br>
+    State: <span th:text="${student.address.state}"></span>
 </body>
 </html>

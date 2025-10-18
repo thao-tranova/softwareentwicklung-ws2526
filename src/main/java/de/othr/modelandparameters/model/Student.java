@@ -5,6 +5,7 @@ public class Student {
     private String name;
     private String email;
     private int age;
+    private Address address;
 
     public Long getId() {
         return id;
@@ -36,5 +37,13 @@ public class Student {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

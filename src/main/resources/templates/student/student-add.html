@@ -25,6 +25,24 @@
                 <input id="age" class="form-control" type="text" th:field="*{age}">
             </div>
         </div>
+        <div class="mb-3 row">
+            <label class="form-label col-sm-2" for="street">Street:</label>
+            <div class="col-sm-10">
+                <input id="street" class="form-control" type="text" th:field="*{address.street}">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="form-label col-sm-2" for="city">City:</label>
+            <div class="col-sm-10">
+                <input id="city" class="form-control" type="text" th:field="*{address.city}">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label class="form-label col-sm-2" for="state">State:</label>
+            <div class="col-sm-10">
+                <input id="state" class="form-control" type="text" th:field="*{address.state}">
+            </div>
+        </div>
         <button class="btn btn-primary" type="submit">Submit</button>
     </form>
 </body>
