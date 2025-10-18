@@ -10,7 +10,19 @@
     <link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
 </head>
 <body class="container-sm pt-5">
-    <form class="container-sm" th:action="@{/login/process}"  method="post">
+<!-- Aufgabe 1 -->
+<!--    <form class="container-sm" th:action="@{/login/process}"  method="post">-->
+<!--        <div class="mb-3">-->
+<!--            <label class="form-label">Login</label>-->
+<!--            <input class="form-control" placeholder="Login" th:name="user">-->
+<!--        </div>-->
+<!--        <div class="mb-3">-->
+<!--            <label class="form-label">Password</label>-->
+<!--            <input class="form-control" type="password" placeholder="*****" th:name="password">-->
+<!--        </div>-->
+<!--        <button class="btn btn-primary" type="submit" value="Submit">Go!</button>-->
+<!--    </form>-->
+    <form class="container-sm" th:action="@{/login/processMap}"  method="post">
         <div class="mb-3">
             <label class="form-label">Login</label>
             <input class="form-control" placeholder="Login" th:name="user">
@@ -18,6 +30,14 @@
         <div class="mb-3">
             <label class="form-label">Password</label>
             <input class="form-control" type="password" placeholder="*****" th:name="password">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Role</label>
+            <select class="form-control" id="role" th:name="role">
+                <option th:value="-1" th:text="Select"></option>
+                <option th:value="1" th:text="Administrator"></option>
+                <option th:value="2" th:text="Benutzer"></option>
+            </select>
         </div>
         <button class="btn btn-primary" type="submit" value="Submit">Go!</button>
     </form>
