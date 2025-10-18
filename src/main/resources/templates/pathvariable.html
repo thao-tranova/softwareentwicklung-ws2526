@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sending a parameter with @RequestParam</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="pt-5 container-sm">
+    <div th:each="postid : ${postids}">
+        <p>
+            <a class="btn btn-info" th:href="@{/pathvariable/process/{postid}(postid = ${postid})}">
+                View Post
+                <span th:text="${postid}"></span>
+            </a>
+        </p>
+    </div>
+</body>
+</html>
