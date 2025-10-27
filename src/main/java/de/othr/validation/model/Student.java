@@ -8,9 +8,9 @@ import java.time.LocalDate;
 
 public class Student {
     private Long id;
-    @Size(min = 3, max = 50, message = "Name muss zwischen 3 und 50 Zeichen enthalten.")
+    @Size(min = 3, max = 50, message = "{jakarta.validation.constraints.Size}")
     private String name;
-    @NotBlank(message = "E-Mail darf nicht leer sein.")
+    @NotBlank(message = "{student.email.not.blank}")
     private String email;
     @NotNull
     private LocalDate birthDate;

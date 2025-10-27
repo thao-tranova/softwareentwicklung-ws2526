@@ -20,7 +20,7 @@ public class StudentValidator implements Validator {
             long age = ChronoUnit.YEARS.between(student.getBirthDate(), LocalDate.now());
             System.out.println("Age: " + age);
             if (age < 16) {
-                errors.rejectValue("birthDate", null, null, "Ein Studierende muss mindestens 16 Jahre alt sein.");
+                errors.rejectValue("birthDate", "student.birthDate.less16");
             }
         }
     }
