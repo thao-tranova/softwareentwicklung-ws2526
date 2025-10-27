@@ -14,13 +14,19 @@
     <div class="mb-3 row">
         <label class="form-label col-sm-2" for="name">Name:</label>
         <div class="col-sm-10">
-            <input id="name" class="form-control" type="text" th:field="*{name}">
+            <input id="name" class="form-control" type="text" th:field="*{name}"
+                   th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'">
+            <div class="invalid-feedback">
+                <span th:errors="*{name}"></span>
+            </div>
+
         </div>
     </div>
     <div class="mb-3 row">
         <label class="form-label col-sm-2" for="email">Email:</label>
         <div class="col-sm-10">
             <input id="email" class="form-control" type="email" th:field="*{email}">
+            <p th:if="${#fields.hasErrors('email')}" th:errorclass="error" th:errors="*{email}"></p>
         </div>
     </div>
     <div class="mb-3 row">
