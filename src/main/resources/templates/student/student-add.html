@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Form</title>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" type="text/css"/>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="pt-5">
+<form class="container-sm" th:action="@{/student/add/process}" th:object="${student}" method="post">
+    <div class="mb-3 row">
+        <label class="form-label col-sm-2" for="name">Name:</label>
+        <div class="col-sm-10">
+            <input id="name" class="form-control" type="text" th:field="*{name}">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="form-label col-sm-2" for="email">Email:</label>
+        <div class="col-sm-10">
+            <input id="email" class="form-control" type="email" th:field="*{email}">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="form-label col-sm-2" for="birthDate">Date of Birth</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control" id="birthDate" th:field="*{birthDate}"/>
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+</body>
+</html>
