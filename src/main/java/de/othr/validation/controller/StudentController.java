@@ -1,10 +1,12 @@
 package de.othr.validation.controller;
 
 import de.othr.validation.model.Student;
+import de.othr.validation.validator.StudentValidator;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -14,6 +16,11 @@ import java.time.temporal.ChronoUnit;
 @Controller
 @RequestMapping("/student")
 public class StudentController {
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        binder.addValidators(new StudentValidator());
+    }
+
     @GetMapping("add")
     public String addStudent(Model model) {
         Student student = new Student();

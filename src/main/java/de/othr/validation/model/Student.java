@@ -1,6 +1,7 @@
 package de.othr.validation.model;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ public class Student {
     private String name;
     @NotBlank(message = "E-Mail darf nicht leer sein.")
     private String email;
+    @NotNull
     private LocalDate birthDate;
 
     public Long getId() {
