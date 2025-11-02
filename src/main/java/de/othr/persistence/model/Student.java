@@ -18,8 +18,9 @@ public class Student implements Serializable {
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName ="id")
     private Address address;
-    // funktioniert ohne Teilaufgabe 1.8 nicht
-    // private Course course;
+    @ManyToOne
+    @JoinColumn(name = "course_id", referencedColumnName ="id")
+    private Course course;
 
     @Enumerated(EnumType.STRING)
     private GenderEnum gender;
@@ -64,11 +65,11 @@ public class Student implements Serializable {
         this.address = address;
     }
 
-//    public Course getCourse() {
-//        return course;
-//    }
-//
-//    public void setCourse(Course course) {
-//        this.course = course;
-//    }
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 }
