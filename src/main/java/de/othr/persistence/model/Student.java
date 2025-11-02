@@ -1,9 +1,7 @@
 package de.othr.persistence.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import de.othr.persistence.utils.GenderEnum;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serializable;
@@ -21,6 +19,9 @@ public class Student implements Serializable {
     // private Address address;
     // funktioniert ohne Teilaufgabe 1.8 nicht
     // private Course course;
+
+    @Enumerated(EnumType.STRING)
+    private GenderEnum gender;
 
     public void setId(Long id) {
         this.id = id;
@@ -44,6 +45,14 @@ public class Student implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public GenderEnum getGender() {
+        return gender;
+    }
+
+    public void setGender(GenderEnum gender) {
+        this.gender = gender;
     }
 
 //    public Address getAddress() {
