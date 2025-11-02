@@ -15,8 +15,9 @@ public class Student implements Serializable {
     private String name;
     @NotBlank(message = "Email is mandatory")
     private String email;
-    // funktioniert ohne Teilaufgabe 1.7 nicht
-    // private Address address;
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName ="id")
+    private Address address;
     // funktioniert ohne Teilaufgabe 1.8 nicht
     // private Course course;
 
@@ -55,14 +56,14 @@ public class Student implements Serializable {
         this.gender = gender;
     }
 
-//    public Address getAddress() {
-//        return address;
-//    }
-//
-//    public void setAddress(Address address) {
-//        this.address = address;
-//    }
-//
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
 //    public Course getCourse() {
 //        return course;
 //    }
