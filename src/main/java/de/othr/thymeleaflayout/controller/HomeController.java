@@ -11,4 +11,10 @@ public class HomeController {
 	public String home() {
 		return "home";
 	}
+
+    //uses the thymeleaf layout dialect
+    @RequestMapping(method = RequestMethod.GET, value = "/content")
+    public String layout() {
+        return "content";
+    }
 }
