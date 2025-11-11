@@ -17,4 +17,9 @@ public class HomeController {
     public String layout() {
         return "content";
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/admin")
+    public String layoutAdmin() {
+        return "content-adm";
+    }
 }
