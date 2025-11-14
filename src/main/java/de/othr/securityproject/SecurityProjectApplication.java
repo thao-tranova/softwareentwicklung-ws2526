@@ -1,13 +1,13 @@
-package de.othr.templateproject;
+package de.othr.securityproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TemplateProjectApplication {
+public class SecurityProjectApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TemplateProjectApplication.class, args);
+        SpringApplication.run(SecurityProjectApplication.class, args);
     }
 
 }
