@@ -22,24 +22,25 @@ public class SecurityConfiguration {
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(rQ -> {
-      rQ.requestMatchers("/h2-console/**", "/console/**", "/signup/", "/signin/").permitAll();
-      rQ.requestMatchers("/images/**", "/js/**", "/webjars/**").permitAll();
+         rQ.requestMatchers("/h2-console/**", "/console/**", "/signup/", "/signin/").permitAll();
+         rQ.requestMatchers("/images/**", "/js/**", "/webjars/**").permitAll();
 
-      rQ.requestMatchers("/home").permitAll();
-      rQ.requestMatchers ("/student/**").hasAnyAuthority("ADMIN","STUDENT");
-      rQ.requestMatchers("/admin/**", "/settings/**").hasAuthority("ADMIN") ;
+         rQ.requestMatchers("/home").permitAll();
+         rQ.requestMatchers("/student/**").hasAnyAuthority("ADMIN", "STUDENT");
+         rQ.requestMatchers("/admin/**", "/settings/**").hasAuthority("ADMIN");
 
-      rQ.requestMatchers("/api/search/", "/api/profile/", "/signout/").authenticated();
-    });
-    //deprecate code, try to migrate it!
-    http.formLogin()
-       //.loginPage("/login") , if you want to have a customized login page….
-       .and()
-       .logout()
-       //where the user goes after the logout
-       .logoutSuccessUrl("/login")
-       .invalidateHttpSession(true)
-       .permitAll();
+         rQ.requestMatchers("/api/search/", "/api/profile/", "/signout/").authenticated();
+       })
+       .formLogin(form -> form
+          //.loginPage("/login") , if you want to have a customized login page….
+          .loginProcessingUrl("/login")
+          .defaultSuccessUrl("/", true)
+          .permitAll())
+       // where the user goes after the logout
+       .logout(logout -> logout
+          .logoutSuccessUrl("/login")
+          .invalidateHttpSession(true)
+          .permitAll());
 
     // If you choose to disable the X-Frame-Options header (not recommended) by setting.headers().frameOptions().disable(), then Spring Security will not add the X-Frame-Options header to the response.
     // This means your application could be rendered in a frame, and also could be vulnerable to Clickjacking attacks.
