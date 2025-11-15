@@ -12,4 +12,14 @@ public class HomeController {
   public String home(HttpServletRequest request, Principal principal) {
     return "home";
   }
+
+  @RequestMapping("/admin")
+  public String showAdminHome(HttpServletRequest request, Principal principal) {
+    return "admin";
+  }
+
+  @RequestMapping("/student")
+  public String showStudentHome(HttpServletRequest request, Principal principal) {
+    return "student";
+  }
 }
