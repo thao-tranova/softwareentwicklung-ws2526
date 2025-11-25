@@ -27,7 +27,6 @@ public class StudentController {
     this.courseService= courseService;
   }
 
-  // will work after adding view in exercise 6
   @GetMapping(value = {"", "/all"})
   public String showUserList(Model model, @RequestParam(required = false) String keyword,
                              @RequestParam(required = false, defaultValue = "1") int page,
