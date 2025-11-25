@@ -12,12 +12,12 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name="student")
-public class Student extends User{
-
+public class Student extends User implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	Long id;
 
@@ -27,7 +27,6 @@ public class Student extends User{
 	@Enumerated(EnumType.STRING)
 	private GenderEnum gender;
 
-
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	private Address address;
@@ -36,18 +35,14 @@ public class Student extends User{
 	@JoinColumn(name = "course_id", referencedColumnName = "id")
 	private Course course;
 
-
 	public Student() {
-
 		Address address= new Address();
 		this.setAddress(address);
 		this.setId((long) -1);
 
 		Course course = new Course();
 		this.setCourse(course);
-
 	}
-
 
 	public Address getAddress() {
 		return address;
@@ -75,7 +70,6 @@ public class Student extends User{
 		this.name = name;
 	}
 
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -86,6 +80,4 @@ public class Student extends User{
 	public void setGender(GenderEnum gender) {
 		this.gender = gender;
 	}
-
-
 }
