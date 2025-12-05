@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>de.othr</groupId>
-    <artifactId>TemplateProject</artifactId>
+    <artifactId>RestProject</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>TemplateProject</name>
-    <description>TemplateProject</description>
+    <name>RestProject</name>
+    <description>RestProject</description>
     <url/>
     <licenses>
         <license/>
