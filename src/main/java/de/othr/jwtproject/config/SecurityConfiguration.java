@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -26,30 +27,17 @@ public class SecurityConfiguration {
 
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests(rQ -> {
-         rQ.requestMatchers("/api/register", "/api/post", "/api/users/authenticate").permitAll();
-         rQ.requestMatchers("/api/search", "/api/demo", "/api/profile").authenticated();
-       })
-       .formLogin(form -> form
-          //.loginPage("/login") , if you want to have a customized login page….
-          .loginProcessingUrl("/login")
-          .defaultSuccessUrl("/", true)
-          .permitAll())
-       // where the user goes after the logout
-       .logout(logout -> logout
-          .logoutSuccessUrl("/login")
-          .invalidateHttpSession(true)
-          .permitAll());
-
     http
-       .headers(headers -> headers
-          .frameOptions(frameOptions -> frameOptions
-             .sameOrigin())
-       );
-
-    http.csrf(AbstractHttpConfigurer::disable);
-
-    http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+       .securityMatcher("/api/**") // Apply only to API requests
+       .authorizeHttpRequests(rQ -> rQ
+          .requestMatchers("/api/register", "api/post", "/api/users/authenticate").permitAll()
+          .requestMatchers("/api/search", "/api/demo", "/api/profile").authenticated()
+       )
+       .csrf(AbstractHttpConfigurer::disable)
+       .sessionManagement(session -> session
+          .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Stateless for JWT
+       )
+       .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
     return http.build();
   }
