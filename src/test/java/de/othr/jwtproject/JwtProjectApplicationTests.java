@@ -1,10 +1,10 @@
-package de.othr.templateproject;
+package de.othr.jwtproject;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TemplateProjectApplicationTests {
+class JwtProjectApplicationTests {
 
     @Test
     void contextLoads() {
