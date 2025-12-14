@@ -1,11 +1,11 @@
 package de.othr.jwtproject.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 
+@Entity
+@Table(name="authority")
 public class Authority implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
