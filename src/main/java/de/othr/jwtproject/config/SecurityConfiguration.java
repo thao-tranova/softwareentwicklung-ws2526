@@ -27,18 +27,19 @@ public class SecurityConfiguration {
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
     http.authorizeHttpRequests(rQ -> {
-      rQ.requestMatchers("/api/register ", "/api/users/authenticate").permitAll();
-      rQ.requestMatchers("/api/search", "/api/demo", "/api/profile").authenticated();
-    });
-
-    http.formLogin()
-       //.loginPage("/login") , if you want to have a customized login page….
-       .and()
-       .logout()
-       //where the user goes after the logout
-       .logoutSuccessUrl("/login")
-       .invalidateHttpSession(true)
-       .permitAll();
+         rQ.requestMatchers("/api/register ", "/api/users/authenticate").permitAll();
+         rQ.requestMatchers("/api/search", "/api/demo", "/api/profile").authenticated();
+       })
+       .formLogin(form -> form
+          //.loginPage("/login") , if you want to have a customized login page….
+          .loginProcessingUrl("/login")
+          .defaultSuccessUrl("/", true)
+          .permitAll())
+       // where the user goes after the logout
+       .logout(logout -> logout
+          .logoutSuccessUrl("/login")
+          .invalidateHttpSession(true)
+          .permitAll());
 
     http
        .headers(headers -> headers
